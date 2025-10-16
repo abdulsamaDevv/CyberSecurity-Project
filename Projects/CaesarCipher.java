@@ -17,12 +17,35 @@ public class CaesarCipher {
 
     /** Encrypt text by shifting letters by 'shift'. */
     public static String encrypt(String text, int shift) {
-        // TODO:
         //  1. Loop through characters
         //  2. If letter, shift within A–Z or a–z
         //  3. Append to result
         //  4. If not a letter, append unchanged
-        throw new UnsupportedOperationException("encrypt not implemented");
+        String result = "";
+        int n = text.length();
+        
+        if (text == null || n == 0) {
+            return result;
+        }
+        
+        for (int i = 0; i < n; i++) {
+            char c = text.charAt(i);
+            if (Character.isUpperCase(c)) {
+                char base = 'A';
+                char shifted = (char) ((c - base + shift) % 26 + base);
+                result += shifted;
+            } else if (Character.isLowerCase(c)){
+                char base = 'a';
+                char shifted = (char) ((c - base + shift) % 26 + base);
+                result += shifted;
+            } else {
+                return result += c;
+            }
+            }
+
+     
+        return result; // return the final encrypted string
+
     }
 
     /** Decrypt by reversing the shift. Hint: call encrypt(text, 26 - shift). */
