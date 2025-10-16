@@ -39,7 +39,7 @@ public class CaesarCipher {
                 char shifted = (char) ((c - base + shift) % 26 + base);
                 result += shifted;
             } else {
-                return result += c;
+             result += c;
             }
             }
 
@@ -50,17 +50,19 @@ public class CaesarCipher {
 
     /** Decrypt by reversing the shift. Hint: call encrypt(text, 26 - shift). */
     public static String decrypt(String text, int shift) {
-        // TODO:
-        //  1. Return encrypt(text, 26 - shift)
-        throw new UnsupportedOperationException("decrypt not implemented");
+        
+        return encrypt(text, 26 - shift); // take the encrypted text and shift it back to original text
     }
 
     /** Brute-force all 25 possible shifts and print them. */
     public static void bruteForce(String encryptedText) {
-        // TODO:
+        
         //  for shift = 1..25
         //    print shift and decrypt result
-        throw new UnsupportedOperationException("bruteForce not implemented");
+       for (int shift = 1; shift <= 25; shift ++) { // loop through all possible shifts
+              String decrypted = decrypt(encryptedText, shift); // decrypt the text with the current shift number
+            System.out.println("Shift " + shift + ": " + decrypted); // print the shift number and the decrypted text
+       }
     }
 
     // -------------------- MAIN --------------------
